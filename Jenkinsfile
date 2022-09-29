@@ -25,8 +25,8 @@ pipeline{
 		stage('deploy index.html on httpd'){
                         steps{
                                 echo "deploying imdex.html"
-				sh"cp -r /home/ec2-user/22Q1/index.html /var/www/html/"
-				sh"chmod -R /var/www/html/"
+				sh"sudo cp -r /home/ec2-user/22Q1/index.html /var/www/html/"
+				sh"sudo chmod -R /var/www/html/"
                         }
                 }
 	}
