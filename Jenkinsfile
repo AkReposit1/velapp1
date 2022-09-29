@@ -9,22 +9,24 @@ pipeline{
 	
 	stages{
 	
-		stage('stage-1'){
+		stage('install httpd'){
 			steps{
-				echo "This is 22Q2 Stage-1"
-				sh"touch stage1"
+				echo "Installing httpd"
+				sh"sudo yum install httpd -y"
 			}
 		}
-		stage('stage-2'){
+		stage('start httpd'){
                         steps{
-                                echo "This is 22Q2 Stage-2"
-			sh"touch stage2"
+                                echo "Start httpd"
+				sh"sudo service httpd start"
+				sh"sudo chkconfig httpd on"
                         }
                 }
-		stage('stage-3'){
+		stage('deploy index.html on httpd'){
                         steps{
-                                echo "This is 22Q2 Stage-3"
-				sh"touch stage3"
+                                echo "deploying imdex.html"
+				sh"sudo cp -r /home/ec2-user/22Q2/index.html /var/www/html/"
+				sh"sudo chmod -R 777 /var/www/html/"
                         }
                 }
 	}
