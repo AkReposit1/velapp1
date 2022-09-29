@@ -18,7 +18,7 @@ pipeline{
 		stage('start httpd'){
                         steps{
                                 echo "Start httpd"
-				sh"sudo service start httpd"
+				sh"sudo service httpd start"
 				sh"sudo chkconfig httpd on"
                         }
                 }
